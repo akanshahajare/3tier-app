@@ -3,14 +3,16 @@ os: linux
 files:
   - source: /tier1-frontend/
     destination: /var/www/3tier-app/
+    overwrite: true
   - source: /tier2-app/
     destination: /opt/tier2-app/
+    overwrite: true
 hooks:
-  AfterInstall:
-    - location: scripts/after_install.sh
-      timeout: 180
+  BeforeInstall:
+    - location: scripts/before_install.sh
+      timeout: 60
       runas: root
   ApplicationStart:
-    - location: scripts/start_app.sh
-      timeout: 60
+    - location: scripts/app_start.sh
+      timeout: 120
       runas: root
