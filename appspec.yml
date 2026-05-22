@@ -1,11 +1,11 @@
 version: 0.0
 os: linux
 files:
+  - source: /tier2-app/
+    destination: /home/ec2-user/deployment/tier2-app/
+    overwrite: true
   - source: /tier1-frontend/
     destination: /var/www/3tier-app/
-    overwrite: true
-  - source: /tier2-app/
-    destination: /opt/tier2-app/
     overwrite: true
 hooks:
   BeforeInstall:
