@@ -1,4 +1,7 @@
 #!/bin/bash
-sudo rm -rf /var/www/html/*
-sudo cp -r /home/ec2-user/deployment/tier1-frontend/* /var/www/html/
-sudo systemctl restart httpd
+set -e
+
+cp -r /opt/tier1-frontend/* /var/www/html/
+
+systemctl restart httpd
+systemctl enable httpd
