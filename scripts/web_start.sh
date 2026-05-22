@@ -1,10 +1,4 @@
 #!/bin/bash
-set -e
-
-echo "Deploying frontend files..."
-
-cp -r /opt/tier1-frontend/* /var/www/html/
-
-systemctl restart httpd
-
-echo "Frontend deployed successfully"
+sudo rm -rf /var/www/html/*
+sudo cp -r /home/ec2-user/deployment/tier1-frontend/* /var/www/html/
+sudo systemctl restart httpd
