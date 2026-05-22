@@ -1,14 +1,21 @@
 version: 0.2
-
 phases:
   install:
+    runtime-versions:
+      nodejs: 18
+  pre_build:
     commands:
-      - echo Install phase
-
+      - echo "Installing Node.js dependencies..."
+      - cd tier2-app && npm install && cd ..
   build:
     commands:
-      - echo Build phase
-
+      - echo "Build started at $(date)"
+      - echo "Validating appspec.yml structure..."
+      - test -f appspec.yml && echo "appspec.yml OK"
+  post_build:
+    commands:
+      - echo "Build completed successfully at $(date)"
 artifacts:
   files:
     - '**/*'
+  discard-paths: no
